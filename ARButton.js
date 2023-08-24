@@ -23,7 +23,7 @@ class ARButton {
 
 				const overlay = document.createElement( 'div' );
 				overlay.classList.add('overlay_1');
-				// overlay.style.display = 'none';
+				overlay.style.display = 'none';
 				document.body.appendChild( overlay );
 
 				// svg要素
@@ -45,6 +45,7 @@ class ARButton {
 
 
 
+			
 
 
 				// ここに新しいbutton要素を追加
@@ -57,7 +58,7 @@ class ARButton {
 				button_model1.style.backgroundColor = 'white';
 				button_model1.style.color = 'black';
 				button_model1.style.padding = '10px 10px';
-				// button_model1.style.border = 'none';
+				button_model1.style.border = 'none';
 				button_model1.style.borderRadius = '5px';
 				button_model1.style.cursor = 'pointer';
 				button_model1.style.position = 'absolute';
@@ -114,7 +115,7 @@ class ARButton {
 				button_model2.style.backgroundColor = 'white';
 				button_model2.style.color = 'black';
 				button_model2.style.padding = '10px 10px';
-				// button_model2.style.border = 'none';
+				button_model2.style.border = 'none';
 				button_model2.style.borderRadius = '5px';
 				button_model2.style.cursor = 'pointer';
 				button_model2.style.position = 'absolute';
@@ -211,8 +212,8 @@ class ARButton {
 				currentSession.removeEventListener( 'end', onSessionEnded );
 
 				button.textContent = 'START AR';
+				sessionInit.domOverlay.root.style.display = 'none';
 
-				
 				currentSession = null;
 
 			}
@@ -308,7 +309,7 @@ class ARButton {
 			element.style.font = 'normal 13px sans-serif';
 			element.style.textAlign = 'center';
 			element.style.opacity = '0.5';
-			// element.style.outline = 'none';
+			element.style.outline = 'none';
 			element.style.zIndex = '999';
 
 		}
@@ -316,7 +317,7 @@ class ARButton {
 		if ( 'xr' in navigator ) {
 
 			button.id = 'ARButton';
-			// button.style.display = 'none';
+			button.style.display = 'none';
 
 			stylizeElement( button );
 
@@ -347,7 +348,7 @@ class ARButton {
 
 			message.style.left = 'calc(50% - 90px)';
 			message.style.width = '180px';
-			// message.style.textDecoration = 'none';
+			message.style.textDecoration = 'none';
 
 			stylizeElement( message );
 
