@@ -24,6 +24,7 @@ class ARButton {
 				const overlay = document.createElement('div');
 				overlay.classList.add('overlay_1');
 				overlay.style.display = 'none';
+				overlay.style.height = '100vh';	//追加
 				document.body.appendChild(overlay);
 
 
