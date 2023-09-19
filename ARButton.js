@@ -3,42 +3,47 @@ class ARButton {
 	// 追加	
 	static model1_display = 1;	//初期有効
 	static model2_display = 1;	//初期有効
-	
 
 
 
-	static createButton( renderer, sessionInit = {}) {
+
+	static createButton(renderer, sessionInit = {}) {
 
 		// const arButton = new ARButton(); // ARButton クラスのインスタンスを作成
-		
+
 
 		// ボタンをbody要素に追加
-		const button = document.createElement( 'button' );
+		const button = document.createElement('button');
 
-		function showStartAR( /*device*/ ) {
+		function showStartAR( /*device*/) {
 
-			
-			if ( sessionInit.domOverlay === undefined ) {
-				
 
-				const overlay = document.createElement( 'div' );
+			if (sessionInit.domOverlay === undefined) {
+
+
+				const overlay = document.createElement('div');
 				overlay.classList.add('overlay_1');
 				overlay.style.display = 'none';
-				document.body.appendChild( overlay );
+				document.body.appendChild(overlay);
+
+
+
+
+
 
 				// svg要素
-				const svg = document.createElementNS( 'http://www.w3.org/2000/svg', 'svg' );
-				svg.setAttribute( 'width', 38 );
-				svg.setAttribute( 'height', 38 );
+				const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+				svg.setAttribute('width', 38);
+				svg.setAttribute('height', 38);
 				svg.style.position = 'absolute';
 				svg.style.right = '20px';
 				svg.style.top = '20px';
-				svg.addEventListener( 'click', function () {
+				svg.addEventListener('click', function () {
 
 					currentSession.end();
 
 				});
-				overlay.appendChild( svg );
+				overlay.appendChild(svg);
 
 
 
@@ -49,7 +54,8 @@ class ARButton {
 				// ここに新しいbutton要素を追加
 				const button_model1 = document.createElement('button');
 				button_model1.classList.add('button_model1');
-				button_model1.textContent = 'MODEL1(有効)'; // ボタンのテキストを設定
+				button_model1.textContent = 'MODEL1(有効)'; // ボタンのテキストを設
+
 
 
 				// ボタンにスタイルを適用
@@ -63,24 +69,24 @@ class ARButton {
 				button_model1.style.right = '10px';
 				button_model1.style.bottom = '120px';	//(+60)
 
-				// ボタンをoverlayに追加
-				overlay.appendChild(button_model1);
+				// // ボタンをoverlayに追加
+				// overlay.appendChild(button_model1);
 
+				// ボタンをbodyに追加
+				document.body.appendChild(button_model1);
 
 				// ボタンクリックイベント
 				button_model1.addEventListener('click', () => {
 					//変数値を変更する
-					if (ARButton.model1_display == 0)
-					{
+					if (ARButton.model1_display == 0) {
 						ARButton.model1_display = 1;
 						button_model1.textContent = 'MODEL1(有効)'; // ボタンのテキストを設定
 						console.log("true ARButton.model1_display : ", ARButton.model1_display);
-						
+
 						// ARButton.model1_display の値が変更されたときにイベントを発火する
 						model1_display_Event();
 					}
-					else
-					{
+					else {
 						ARButton.model1_display = 0;
 						console.log("else ARButton.model1_display : ", ARButton.model1_display);
 						button_model1.textContent = 'MODEL1(無効)'; // ボタンのテキストを設定
@@ -130,17 +136,15 @@ class ARButton {
 				// ボタンクリックイベント
 				button_model2.addEventListener('click', () => {
 					//変数値を変更する
-					if (ARButton.model2_display == 0)
-					{
+					if (ARButton.model2_display == 0) {
 						ARButton.model2_display = 1;
 						button_model2.textContent = 'MODEL2(有効)'; // ボタンのテキストを設定
 						console.log("true ARButton.model2_display : ", ARButton.model2_display);
-						
+
 						// ARButton.model2_display の値が変更されたときにイベントを発火する
 						fireARButtonQChangedEvent();
 					}
-					else
-					{
+					else {
 						ARButton.model2_display = 0;
 						console.log("else ARButton.model2_display : ", ARButton.model2_display);
 						button_model2.textContent = 'MODEL2(無効)'; // ボタンのテキストを設定
@@ -161,26 +165,26 @@ class ARButton {
 					document.dispatchEvent(arButtonQChangedEvent);
 				}
 
-				
 
 
 
 
 
 
-				const path = document.createElementNS( 'http://www.w3.org/2000/svg', 'path' );
-				path.setAttribute( 'd', 'M 12,12 L 28,28 M 28,12 12,28' );
-				path.setAttribute( 'stroke', '#fff' );
-				path.setAttribute( 'stroke-width', 2 );
-				svg.appendChild( path );
 
-				if ( sessionInit.optionalFeatures === undefined ) {
+				const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+				path.setAttribute('d', 'M 12,12 L 28,28 M 28,12 12,28');
+				path.setAttribute('stroke', '#fff');
+				path.setAttribute('stroke-width', 2);
+				svg.appendChild(path);
+
+				if (sessionInit.optionalFeatures === undefined) {
 
 					sessionInit.optionalFeatures = [];
 
 				}
 
-				sessionInit.optionalFeatures.push( 'dom-overlay' );
+				sessionInit.optionalFeatures.push('dom-overlay');
 				sessionInit.domOverlay = { root: overlay };
 
 			}
@@ -189,13 +193,13 @@ class ARButton {
 
 			let currentSession = null;
 
-			async function onSessionStarted( session ) {
+			async function onSessionStarted(session) {
 
-				session.addEventListener( 'end', onSessionEnded );
+				session.addEventListener('end', onSessionEnded);
 
-				renderer.xr.setReferenceSpaceType( 'local' );
+				renderer.xr.setReferenceSpaceType('local');
 
-				await renderer.xr.setSession( session );
+				await renderer.xr.setSession(session);
 
 				button.textContent = 'STOP AR';
 				sessionInit.domOverlay.root.style.display = '';
@@ -204,9 +208,9 @@ class ARButton {
 
 			}
 
-			function onSessionEnded( /*event*/ ) {
+			function onSessionEnded( /*event*/) {
 
-				currentSession.removeEventListener( 'end', onSessionEnded );
+				currentSession.removeEventListener('end', onSessionEnded);
 
 				button.textContent = 'START AR';
 				sessionInit.domOverlay.root.style.display = 'none';
@@ -239,9 +243,9 @@ class ARButton {
 
 			button.onclick = function () {
 
-				if ( currentSession === null ) {
+				if (currentSession === null) {
 
-					navigator.xr.requestSession( 'immersive-ar', sessionInit ).then( onSessionStarted );
+					navigator.xr.requestSession('immersive-ar', sessionInit).then(onSessionStarted);
 
 				} else {
 
@@ -256,7 +260,7 @@ class ARButton {
 
 
 
-			
+
 
 		}
 
@@ -283,17 +287,17 @@ class ARButton {
 
 		}
 
-		function showARNotAllowed( exception ) {
+		function showARNotAllowed(exception) {
 
 			disableButton();
 
-			console.warn( 'Exception when trying to call xr.isSessionSupported', exception );
+			console.warn('Exception when trying to call xr.isSessionSupported', exception);
 
 			button.textContent = 'AR NOT ALLOWED';
 
 		}
 
-		function stylizeElement( element ) {
+		function stylizeElement(element) {
 
 			element.style.position = 'absolute';
 			element.style.bottom = '20px';
@@ -310,29 +314,29 @@ class ARButton {
 
 		}
 
-		if ( 'xr' in navigator ) {
+		if ('xr' in navigator) {
 
 			button.id = 'ARButton';
 			button.style.display = 'none';
 
-			stylizeElement( button );
+			stylizeElement(button);
 
-			navigator.xr.isSessionSupported( 'immersive-ar' ).then( function ( supported ) {
+			navigator.xr.isSessionSupported('immersive-ar').then(function (supported) {
 
 				supported ? showStartAR() : showARNotSupported();
-				
 
-			} ).catch( showARNotAllowed );
+
+			}).catch(showARNotAllowed);
 
 			return button;
 
 		} else {
 
-			const message = document.createElement( 'a' );
+			const message = document.createElement('a');
 
-			if ( window.isSecureContext === false ) {
+			if (window.isSecureContext === false) {
 
-				message.href = document.location.href.replace( /^http:/, 'https:' );
+				message.href = document.location.href.replace(/^http:/, 'https:');
 				message.innerHTML = 'WEBXR NEEDS HTTPS'; // TODO Improve message
 
 			} else {
@@ -346,7 +350,7 @@ class ARButton {
 			message.style.width = '180px';
 			message.style.textDecoration = 'none';
 
-			stylizeElement( message );
+			stylizeElement(message);
 
 			return message;
 
