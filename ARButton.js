@@ -69,11 +69,11 @@ class ARButton {
 				button_model1.style.right = '10px';
 				button_model1.style.bottom = '120px';	//(+60)
 
-				// // ボタンをoverlayに追加
-				// overlay.appendChild(button_model1);
+				// ボタンをoverlayに追加
+				overlay.appendChild(button_model1);
 
-				// ボタンをbodyに追加
-				document.body.appendChild(button_model1);
+				// // ボタンをbodyに追加
+				// document.body.appendChild(button_model1);
 
 				// ボタンクリックイベント
 				button_model1.addEventListener('click', () => {
