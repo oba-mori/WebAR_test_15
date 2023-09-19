@@ -45,8 +45,6 @@ class ARButton {
 
 
 
-			
-
 
 				// ここに新しいbutton要素を追加
 				const button_model1 = document.createElement('button');
@@ -63,7 +61,7 @@ class ARButton {
 				button_model1.style.cursor = 'pointer';
 				button_model1.style.position = 'absolute';
 				button_model1.style.right = '10px';
-				button_model1.style.bottom = '60px';
+				button_model1.style.bottom = '120px';	//(+60)
 
 				// ボタンをoverlayに追加
 				overlay.appendChild(button_model1);
@@ -104,7 +102,6 @@ class ARButton {
 
 
 
-
 				// ここに新しいbutton要素を追加
 				const button_model2 = document.createElement('button');
 				button_model2.classList.add('button_model2');
@@ -120,7 +117,7 @@ class ARButton {
 				button_model2.style.cursor = 'pointer';
 				button_model2.style.position = 'absolute';
 				button_model2.style.right = '10px';
-				button_model2.style.bottom = '10px';
+				button_model2.style.bottom = '70px';	//(+60)
 
 
 
@@ -253,7 +250,6 @@ class ARButton {
 				}
 
 			};
-
 
 
 
