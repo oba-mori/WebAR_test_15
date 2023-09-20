@@ -24,7 +24,8 @@ class ARButton {
 				const overlay = document.createElement('div');
 				overlay.classList.add('overlay_1');
 				overlay.style.display = 'none';
-				overlay.style.height = '100vh';	//追加
+				overlay.style.height = '100px !important';		//追加
+				overlay.style.overflowY = 'hidden'; 	// スクロールを非表示にする
 				document.body.appendChild(overlay);
 
 
@@ -55,7 +56,7 @@ class ARButton {
 				// ここに新しいbutton要素を追加
 				const button_model1 = document.createElement('button');
 				button_model1.classList.add('button_model1');
-				button_model1.textContent = 'MODEL1(有効)'; // ボタンのテキストを設
+				button_model1.textContent = 'MODEL1(有効)';		// ボタンのテキストを設
 
 
 
@@ -68,7 +69,7 @@ class ARButton {
 				button_model1.style.cursor = 'pointer';
 				button_model1.style.position = 'absolute';
 				button_model1.style.right = '10px';
-				button_model1.style.bottom = '120px';	//(+60)
+				button_model1.style.bottom = '120px';		//(+60)
 
 				// ボタンをoverlayに追加
 				overlay.appendChild(button_model1);
