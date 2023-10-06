@@ -25,8 +25,13 @@ class ARButton {
 				overlay.classList.add('overlay_1');
 				overlay.style.display = 'none';
 
-				// overlay.style.height = '100px !important';		//追加
-				overlay.style.cssText = 'height: 100px !important;'; // 他のスタイルも同時に設定可能
+
+				//試し
+				//高さ指定
+				// overlay.style.height = '100px !important';			 //追加
+				overlay.style.cssText = 'height: 100px !important;';	// 他のスタイルも同時に設定可能
+
+
 
 				overlay.style.overflowY = 'hidden'; 	// スクロールを非表示にする
 				document.body.appendChild(overlay);
@@ -75,7 +80,7 @@ class ARButton {
 				button_model1.style.bottom = '120px';		//(+60)
 
 				// ボタンをoverlayに追加
-				overlay.appendChild(button_model1);
+				// overlay.appendChild(button_model1);
 
 				// // ボタンをbodyに追加
 				// document.body.appendChild(button_model1);
